@@ -1,0 +1,16 @@
+title: Trailhead Picks
+description: Researched outdoor gear guides and gift ideas for hikers, campers and cold-weather adventurers. No fluff, just picks worth packing.
+# >>> Your Amazon Associates tracking ID (ends in -20). Every product link on the site uses it. <<<
+amazon_tag: outdoorexp-20
+url: "https://sorrel23.github.io"
+baseurl: "/trailhead-picks"
+theme: minima
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
+  - jekyll-sitemap
+permalink: /:title/
+minima:
+  skin: classic
+show_excerpts: true
+exclude: [scripts, README.md, STRATEGY.md, Gemfile]

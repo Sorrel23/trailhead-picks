@@ -1,0 +1,45 @@
+name: Validate & pin new posts
+on:
+  push:
+    branches: [main]
+    paths: ["_posts/**"]
+  workflow_dispatch:
+    inputs:
+      post:
+        description: "Path of a post to pin manually (e.g. _posts/2026-11-15-slug.md)"
+        required: true
+jobs:
+  pin:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with: { fetch-depth: 0 }
+      - uses: actions/setup-python@v5
+        with: { python-version: "3.12" }
+      - run: pip install pillow
+      - name: Find new posts
+        id: new
+        run: |
+          if [ -n "${{ github.event.inputs.post }}" ]; then echo "posts=${{ github.event.inputs.post }}" >> $GITHUB_OUTPUT; exit 0; fi
+          BEFORE="${{ github.event.before }}"
+          if [ -z "$BEFORE" ] || [ "$BEFORE" = "0000000000000000000000000000000000000000" ]; then
+            POSTS=$(ls _posts/*.md)
+          else
+            POSTS=$(git diff --name-only --diff-filter=A "$BEFORE" "${{ github.sha }}" -- '_posts/*.md' | tr '\n' ' ')
+          fi
+          echo "posts=$POSTS" >> $GITHUB_OUTPUT
+      - name: Validate
+        if: steps.new.outputs.posts != ''
+        run: python scripts/check_post.py ${{ steps.new.outputs.posts }}
+      - name: Wait for GitHub Pages to publish
+        if: steps.new.outputs.posts != ''
+        run: sleep 150
+      - name: Pin to Pinterest
+        if: steps.new.outputs.posts != ''
+        env:
+          PINTEREST_BOARD_ID: ${{ secrets.PINTEREST_BOARD_ID }}
+          PINTEREST_TOKEN: ${{ secrets.PINTEREST_TOKEN }}
+          PINTEREST_APP_ID: ${{ secrets.PINTEREST_APP_ID }}
+          PINTEREST_APP_SECRET: ${{ secrets.PINTEREST_APP_SECRET }}
+          PINTEREST_REFRESH_TOKEN: ${{ secrets.PINTEREST_REFRESH_TOKEN }}
+        run: python scripts/post_pin.py ${{ steps.new.outputs.posts }}

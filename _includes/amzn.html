@@ -1,0 +1,10 @@
+{%- comment -%}
+Usage:
+  {% include amzn.html asin="B01KTRDKNW" text="OXO Brew Cordless Kettle" %}   -> product page
+  {% include amzn.html q="faux fur throw blanket" text="See faux fur throws" %} -> Amazon search
+{%- endcomment -%}
+{%- if include.asin -%}
+<a href="https://www.amazon.com/dp/{{ include.asin }}?tag={{ site.amazon_tag }}" rel="sponsored nofollow noopener" target="_blank" class="amzn-btn">{{ include.text | default: "Check it on Amazon" }}</a>
+{%- else -%}
+<a href="https://www.amazon.com/s?k={{ include.q | url_encode }}&tag={{ site.amazon_tag }}" rel="sponsored nofollow noopener" target="_blank" class="amzn-btn">{{ include.text | default: "Shop on Amazon" }}</a>
+{%- endif -%}
