@@ -16,23 +16,33 @@ def token():
         return req(f"{API}/oauth/token", form, {"Authorization": f"Basic {basic}",
                    "Content-Type": "application/x-www-form-urlencoded"}, form=True)["access_token"]
     return os.environ["PINTEREST_TOKEN"]
+BOARD_NAME = "Outdoor Gear & Gift Ideas"
+def find_board(tok, name):
+    url = f"{API}/boards?page_size=100"
+    while url:
+        r = req(url, headers={"Authorization": f"Bearer {tok}"})
+        for b in r.get("items", []):
+            if b["name"].strip().lower() == name.lower(): return b["id"]
+        url = f"{API}/boards?page_size=100&bookmark={r['bookmark']}" if r.get("bookmark") else None
+    raise SystemExit(f"Board '{name}' not found")
 def cfg(key):
     m = re.search(rf'^{key}:\s*"?([^"#\n]*)"?', pathlib.Path("_config.yml").read_text(), re.M)
     return (m.group(1).strip() if m else "").rstrip("/")
 def fm(t, k):
     m = re.search(rf'^{k}:\s*"?(.*?)"?\s*$', t, re.M); return m.group(1) if m else ""
 def main(posts):
-    if not os.environ.get("PINTEREST_BOARD_ID") or not (os.environ.get("PINTEREST_TOKEN") or os.environ.get("PINTEREST_REFRESH_TOKEN")):
-        print("Pinterest secrets not set; skipping pins."); return
+    if not (os.environ.get("PINTEREST_TOKEN") or os.environ.get("PINTEREST_REFRESH_TOKEN")):
+        print("Pinterest token not set; skipping pins."); return
     site = cfg("url") + cfg("baseurl")
     tok = token()
+    board = os.environ.get("PINTEREST_BOARD_ID") or find_board(tok, BOARD_NAME)
     for p in posts:
         t = pathlib.Path(p).read_text()
         slug = re.sub(r"^\d{4}-\d{2}-\d{2}-", "", pathlib.Path(p).stem)
         png = tempfile.mktemp(suffix=".png")
         subprocess.run([sys.executable, str(pathlib.Path(__file__).parent / "make_pin.py"), p, png], check=True)
         desc = f'{fm(t, "description")} Full list + links on Trailhead Picks. (Affiliate links: we may earn a commission.)'
-        payload = {"board_id": os.environ["PINTEREST_BOARD_ID"], "title": fm(t, "pin_title")[:100],
+        payload = {"board_id": board, "title": fm(t, "pin_title")[:100],
                    "description": desc[:500], "link": f"{site}/{slug}/", "alt_text": fm(t, "pin_title")[:500],
                    "media_source": {"source_type": "image_base64", "content_type": "image/png",
                                     "data": base64.b64encode(open(png, "rb").read()).decode()}}
