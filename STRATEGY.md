@@ -32,6 +32,7 @@
 ## Post spec
 - File `_posts/YYYY-MM-DD-slug.md`, slug = main keyword phrase, lowercase-hyphenated.
 - Front matter: `layout: post`, `title` (keyword first, ≤ 65 chars), `date`, `description` (≤ 155 chars), `pin_title` (≤ 60 chars, punchy), `pin_text` (≤ 70 chars), `keywords`, `tags`.
+- Put "**Why it works:**", "**Skip if:**", "**Buying tip:**" each in its own paragraph (blank line between).
 - 600–1,200 words, ≥ 3 Amazon links (5–10 typical), each pick in a `<div class="pick" markdown="1">` block.
 - Must pass `python3 scripts/check_post.py <file>`.
 - Log it in `_data/topics.json`: `{"date","slug","format","keyword"}`. Never publish a keyword already in the log.

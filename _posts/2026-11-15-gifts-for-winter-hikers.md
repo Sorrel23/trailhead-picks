@@ -18,6 +18,7 @@ Every pick below was chosen from specs, long-term owner feedback, and testing pu
 <div class="pick" markdown="1">
 ### 1. Grabber Hand Warmers (bulk pack)
 **Why it works:** Every winter hiker burns through these, and nobody enjoys buying them. A bulk box lasts a whole season of trailheads, ski lifts and tailgates.
+
 **Skip if:** they already carry a rechargeable warmer (see #4) and hate single-use stuff.
 
 {% include amzn.html asin="B003KYNN98" text="See Grabber Hand Warmers on Amazon" %}
@@ -26,6 +27,7 @@ Every pick below was chosen from specs, long-term owner feedback, and testing pu
 <div class="pick" markdown="1">
 ### 2. Darn Tough Hiker Micro Crew socks
 **Why it works:** Merino wool keeps feet warm even when it's damp, and Darn Tough's lifetime guarantee makes this gift last for years. Hikers often own one good pair and rotate it to death.
+
 **Buying tip:** check their shoe size (socks are sized in ranges) and go midweight cushion for winter.
 
 {% include amzn.html asin="B000XFY850" text="See Darn Tough Hiker socks on Amazon" %}
@@ -34,6 +36,7 @@ Every pick below was chosen from specs, long-term owner feedback, and testing pu
 <div class="pick" markdown="1">
 ### 3. Slip-on traction cleats
 **Why it works:** Icy trailheads and frozen switchbacks are where winter hikers actually fall. Cleats like Yaktrax stretch over any boot, so there's no sizing guesswork beyond S/M/L.
+
 **Skip if:** they hike steep, technical ice. They need real microspikes, which are a different (pricier) category.
 
 {% include amzn.html q="yaktrax traction cleats" text="Shop traction cleats on Amazon" %}
@@ -44,6 +47,7 @@ Every pick below was chosen from specs, long-term owner feedback, and testing pu
 <div class="pick" markdown="1">
 ### 4. Unihand rechargeable hand warmers
 **Why it works:** A reusable warmer that doubles as a small power bank. In Outdoor Life's gift testing it was their top electric warmer, running over six hours on high.
+
 **Good to know:** it needs charging before each trip, so it suits day hikers more than multi-day backpackers.
 
 {% include amzn.html asin="B0CG65PYBV" text="See Unihand warmers on Amazon" %}
@@ -82,6 +86,7 @@ Every pick below was chosen from specs, long-term owner feedback, and testing pu
 <div class="pick" markdown="1">
 ### 9. Garmin inReach Messenger
 **Why it works:** Two-way satellite texting and SOS where there's no cell service. For the people who wait at home it's a gift too, because winter trips that go wrong go wrong fast.
+
 **Important:** it needs a Garmin subscription plan to work. Mention that on the gift tag.
 
 {% include amzn.html asin="B0BFBZR4KW" text="See the inReach Messenger on Amazon" %}
