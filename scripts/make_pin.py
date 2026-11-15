@@ -17,9 +17,12 @@ def wrap(draw, text, font, width):
         if draw.textlength(t, font=font) <= width: cur = t
         else: lines.append(cur); cur = w
     return lines + [cur]
-def main(post, out):
+def main(post, out, variant="0"):
     title, sub = fm(post)
-    bg, fg, accent = PALETTES[int(hashlib.md5(title.encode()).hexdigest(), 16) % len(PALETTES)]
+    v = int(variant)
+    if v == 1: sub = "Researched picks + who should skip each one"
+    if v == 2: title, sub = sub or title, title
+    bg, fg, accent = PALETTES[(int(hashlib.md5(title.encode()).hexdigest(), 16) + v) % len(PALETTES)]
     W, H = 1000, 1500
     im = Image.new("RGB", (W, H), bg); d = ImageDraw.Draw(im)
     # simple mountain silhouette
@@ -37,4 +40,4 @@ def main(post, out):
     d.text((80, 1400), "TRAILHEAD PICKS", font=brand, fill=bg)
     im.save(out, optimize=True)
 if __name__ == "__main__":
-    main(*sys.argv[1:3])
+    main(*sys.argv[1:4])

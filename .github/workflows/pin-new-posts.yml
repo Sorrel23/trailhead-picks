@@ -1,4 +1,4 @@
-name: Validate & pin new posts
+name: Validate, image, index & pin new posts
 on:
   push:
     branches: [main]
@@ -6,10 +6,13 @@ on:
   workflow_dispatch:
     inputs:
       post:
-        description: "Path of a post to pin manually (e.g. _posts/2026-11-15-slug.md)"
+        description: "Path of a post to process (e.g. _posts/2026-11-15-slug.md), or 'all'"
         required: true
+permissions:
+  contents: write
+  pages: write
 jobs:
-  pin:
+  run:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -20,21 +23,37 @@ jobs:
       - name: Find new posts
         id: new
         run: |
+          if [ "${{ github.event.inputs.post }}" = "all" ]; then echo "posts=$(ls _posts/*.md | tr '\n' ' ')" >> $GITHUB_OUTPUT; exit 0; fi
           if [ -n "${{ github.event.inputs.post }}" ]; then echo "posts=${{ github.event.inputs.post }}" >> $GITHUB_OUTPUT; exit 0; fi
           BEFORE="${{ github.event.before }}"
-          if [ -z "$BEFORE" ] || [ "$BEFORE" = "0000000000000000000000000000000000000000" ]; then
-            POSTS=$(ls _posts/*.md)
-          else
-            POSTS=$(git diff --name-only --diff-filter=A "$BEFORE" "${{ github.sha }}" -- '_posts/*.md' | tr '\n' ' ')
-          fi
+          if [ -z "$BEFORE" ] || [ "$BEFORE" = "0000000000000000000000000000000000000000" ]; then POSTS=$(ls _posts/*.md)
+          else POSTS=$(git diff --name-only --diff-filter=A "$BEFORE" "${{ github.sha }}" -- '_posts/*.md' | tr '\n' ' '); fi
           echo "posts=$POSTS" >> $GITHUB_OUTPUT
       - name: Validate
         if: steps.new.outputs.posts != ''
         run: python scripts/check_post.py ${{ steps.new.outputs.posts }}
-      - name: Wait for GitHub Pages to publish
+      - name: Generate pin / social images
         if: steps.new.outputs.posts != ''
-        run: sleep 150
-      - name: Pin to Pinterest
+        run: |
+          mkdir -p assets/pins
+          for f in ${{ steps.new.outputs.posts }}; do
+            s=$(basename "$f" .md | sed 's/^[0-9-]\{11\}//')
+            for v in 0 1 2; do python scripts/make_pin.py "$f" "assets/pins/$s-$v.png" $v; done
+            cp "assets/pins/$s-0.png" "assets/pins/$s.png"
+          done
+          git config user.name "github-actions[bot]"; git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add assets/pins
+          if ! git diff --cached --quiet; then git commit -m "Add pin images [skip ci]" && git push; fi
+      - name: Rebuild Pages
+        if: steps.new.outputs.posts != ''
+        run: |
+          curl -s -X POST -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" -H "Accept: application/vnd.github+json" \
+            https://api.github.com/repos/${{ github.repository }}/pages/builds || true
+          sleep 150
+      - name: IndexNow ping (Bing etc.)
+        if: steps.new.outputs.posts != ''
+        run: python scripts/indexnow.py ${{ steps.new.outputs.posts }}
+      - name: Pin to Pinterest (API; skips until token set)
         if: steps.new.outputs.posts != ''
         env:
           PINTEREST_BOARD_ID: ${{ secrets.PINTEREST_BOARD_ID }}

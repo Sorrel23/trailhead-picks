@@ -1,0 +1,10 @@
+{%- assign purl = site.url | append: site.baseurl | append: page.url -%}
+{%- assign pimg = site.url | append: site.baseurl | append: "/assets/pins/" | append: page.slug | append: ".png" -%}
+<div class="share">
+  <img src="{{ pimg }}" alt="{{ page.pin_title | default: page.title | escape }}" class="pin-img" loading="lazy" width="333" height="500">
+  <p><strong>Save this list for later:</strong>
+  <a class="share-btn pin" target="_blank" rel="noopener" href="https://www.pinterest.com/pin/create/button/?url={{ purl | url_encode }}&media={{ pimg | url_encode }}&description={{ page.pin_title | default: page.title | url_encode }}">Pin it</a>
+  <a class="share-btn" target="_blank" rel="noopener" href="https://www.facebook.com/sharer/sharer.php?u={{ purl | url_encode }}">Share</a>
+  <a class="share-btn" target="_blank" rel="noopener" href="https://twitter.com/intent/tweet?url={{ purl | url_encode }}&text={{ page.title | url_encode }}">Post</a>
+  <a class="share-btn" href="mailto:?subject={{ page.title | url_encode }}&body={{ purl | url_encode }}">Email</a></p>
+</div>
