@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Gifts for Campers: 8 Ideas That Make Camp More Comfortable"
-date: 2026-11-16 10:00:00 -0600
+date: 2026-11-16 06:00:00 -0600
 description: "Gifts for campers who love the campsite: a lantern, stove, pillow, chair, blanket and more, with who should skip each and a buying tip."
 pin_title: "8 Gifts for Campers They'll Use Every Trip"
 pin_text: "Lanterns, stoves, chairs and cozy upgrades for camp"
