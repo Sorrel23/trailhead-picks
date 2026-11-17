@@ -13,12 +13,15 @@ sitemap: false
     {%- comment -%}
       Feed for Pinterest Auto-publish (Settings > Auto-publish). Pinterest makes one Pin per new item.
       A post is only listed once its pin image (assets/pins/<slug>.png, made by the GitHub Action)
-      exists, so Pinterest never fetches a missing image.
+      exists, so Pinterest never fetches a missing image. Posts dated before feed_start were already
+      pinned by hand, so they're left out to avoid duplicate pins.
     {%- endcomment -%}
+    {%- assign feed_start = 20261117 -%}
     {%- assign pin_paths = site.static_files | where_exp: "f", "f.path contains '/assets/pins/'" | map: "path" | join: "|" -%}
     {%- for post in site.posts limit: 25 -%}
       {%- assign img_path = "/assets/pins/" | append: post.slug | append: ".png" -%}
-      {%- if pin_paths contains img_path -%}
+      {%- assign pdate = post.date | date: "%Y%m%d" | plus: 0 -%}
+      {%- if pin_paths contains img_path and pdate >= feed_start -%}
       {%- assign img = site.url | append: site.baseurl | append: img_path %}
     <item>
       <title>{{ post.pin_title | default: post.title | xml_escape }}</title>
