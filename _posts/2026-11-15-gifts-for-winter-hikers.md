@@ -13,6 +13,13 @@ Shopping for a hiker is tricky: they've already chosen their boots, pack and jac
 
 Every pick below was chosen from specs, long-term owner feedback, and testing published by outdoor outlets. Prices move a lot in November and December, so check the current price on Amazon.
 
+**Quick picks**
+
+- Best stocking stuffer: {% include amzn.html asin="B003KYNN98" text="Grabber Hand Warmers on Amazon" %}
+- Best practical upgrade: {% include amzn.html asin="B0CG65PYBV" text="Unihand rechargeable hand warmers on Amazon" %}
+- Best splurge: {% include amzn.html asin="B0BFBZR4KW" text="Garmin inReach Messenger on Amazon" %}
+- Need more small gifts? See our [stocking stuffers for hikers]({{ '/stocking-stuffers-for-hikers/' | relative_url }}).
+
 ## Stocking stuffers
 
 <div class="pick" markdown="1">
