@@ -13,6 +13,13 @@ Cold fingers end more winter hikes than tired legs do. Once your hands go numb, 
 
 There are three main types. **Rechargeable** warmers are small battery bricks you charge over USB-C: they get hot fast and you can turn them off between uses. **Air-activated disposables** are the classic packets you shake and drop into a pocket or mitten. **Catalytic** warmers burn lighter fluid for long, steady heat with no outlet needed. We researched published test results from GearJunkie and Outdoor Life, plus owner feedback, to sort out which ones make sense on the trail.
 
+**Quick picks**
+
+- Best rechargeable: {% include amzn.html q="UNIHAND rechargeable hand warmers 2 pack" text="UNIHAND Rechargeable Hand Warmers on Amazon" %}
+- Best gift box: {% include amzn.html q="OCOOPA UT3 Pro Magnetic rechargeable hand warmers" text="OCOOPA UT3 Pro Magnetic on Amazon" %}
+- Best for stocking up: {% include amzn.html q="HotHands hand warmers 40 pair" text="HotHands Hand Warmers on Amazon" %}
+- Shopping for a gift? See our [gifts for winter hikers]({{ '/gifts-for-winter-hikers/' | relative_url }}) and [outdoor gifts for dad]({{ '/outdoor-gifts-for-dad/' | relative_url }}).
+
 <div class="pick" markdown="1">
 ### 1. UNIHAND Rechargeable Hand Warmers — best rechargeable all-rounder
 
