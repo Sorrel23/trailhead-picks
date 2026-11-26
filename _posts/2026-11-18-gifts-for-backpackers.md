@@ -136,3 +136,17 @@ We built this list from published gift guides and reviews at Treeline Review, Se
 ## How to pick the right backpacking gift
 
 Ask yourself what they complain about on trips: cold nights, bad sleep, slow water, a messy dinner. The best gifts fix one of those. If you aren't sure of sizes or what they already own, the stocking stuffers here are safe bets, and two or three of them together make a thoughtful bundle.
+
+## Backpacker gift FAQ
+
+**What do you get a backpacker who has everything?**
+
+Look for small things that wear out or get lost: a long-handled spoon, a spare filter, a fresh headlamp. Or upgrade one item they already carry, like a lighter mug or a warmer sleeping pad. Our [stocking stuffers for hikers]({{ site.baseurl }}/stocking-stuffers-for-hikers/) list has more small ideas.
+
+**What are good stocking stuffers for backpackers?**
+
+The TOAKS spoon, the Swiss Army Classic SD and the Snow Peak 450 mug above are small, light and hard to get wrong. A spare bottle for the Sawyer Squeeze is another easy add-on.
+
+**What's a good backpacking gift for winter trips?**
+
+Warmth wins. The Ghost Whisperer/2 is a light puffy for cold camps, and a vacuum bottle keeps a hot drink ready on cold mornings (see our [best thermos for hiking]({{ site.baseurl }}/best-thermos-for-hiking/) picks).
