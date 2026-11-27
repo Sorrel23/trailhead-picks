@@ -5,7 +5,7 @@ date: 2026-11-20 05:00:00 -0600
 description: "Stocking stuffers for hikers that earn a spot in the pack: a LifeStraw, a pocket lantern, a first-aid kit, merino socks, gear care and more."
 pin_title: "Stocking Stuffers for Hikers: 10 Useful Trail Gifts"
 pin_text: "Small hiking gifts that fit a stocking and actually get packed"
-keywords: "stocking stuffers for hikers, hiking stocking stuffers, small gifts for hikers, gifts for hikers, backpacking stocking stuffers, LifeStraw, hiker gift ideas"
+keywords: "stocking stuffers for hikers, hiking stocking stuffers, camping stocking stuffers, small gifts for hikers, gifts for hikers, backpacking stocking stuffers, LifeStraw, hiker gift ideas"
 tags: [gift guide, gifts, hiking, stocking stuffers]
 ---
 
@@ -166,6 +166,10 @@ Advnture suggests Nikwax gear care as a gift, noting the brand's eco-friendly fo
 
 {% include amzn.html asin="B08DH52WTB" text="Check Nikwax Tech Wash on Amazon" %}
 </div>
+
+## Camping stocking stuffers
+
+Shopping for a camper rather than a hiker? Three picks above work just as well at a campsite: the {% include amzn.html q="Black Diamond Moji R+ lantern" text="Black Diamond Moji R+ lantern" %} lights a tent or picnic table, the {% include amzn.html q="Opinel No.8 stainless steel folding knife" text="Opinel No.8" %} handles camp-kitchen slicing, and the {% include amzn.html asin="B09SBPP9R9" text="LifeStraw" %} is a light backup for clean water. Two more small camping gifts from our [gifts for campers]({{ '/gifts-for-campers/' | relative_url }}) guide fit a stocking too: the {% include amzn.html q="FLEXTAIL Tiny Pump X" text="FLEXTAIL Tiny Pump X" %} for anyone who inflates a pad or air mattress, and the {% include amzn.html q="NEMO Fillo camping pillow" text="NEMO Fillo pillow" %} for anyone who sleeps on a stuff sack.
 
 ## How to build a hiker's stocking
 
